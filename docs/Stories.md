@@ -10,26 +10,28 @@ past missions._
 ### Design 
 ![Mission Queue Mockup](mockups/cff_story1.png)
 
-### Scenario: Display logged fire missions
+### Acceptance Criteria
 
 ```gherkin
+Scenario: Display logged fire missions
+
 Given at least one mission has been logged
 When I open the application
 Then I see a scrollable list of missions ordered newest first
 And each row shows the DTG, observer ID, and status
 ```
 
-### Scenario: Empty queue
-
 ```gherkin
+Scenario: Empty queue
+
 Given no missions have been logged
 When I open the application
 Then I see the message "No missions logged"
 ```
 
-### Scenario: Status Badge Colors
-
 ```gherkin
+Scenario: Status Badge Colors
+
 Given a mission with status "Pending" exists
 When I view the queue
 Then the status badge is amber
