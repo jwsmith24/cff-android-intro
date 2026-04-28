@@ -1,58 +1,87 @@
 package com.example.callforfiretool.ui.theme
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary            = Olive600,
+    onPrimary          = Olive50,
+    primaryContainer   = Olive100,
+    onPrimaryContainer = Olive800,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    secondary            = Tan600,
+    onSecondary          = Tan50,
+    secondaryContainer   = Tan100,
+    onSecondaryContainer = Tan800,
+
+    tertiary            = Slate600,
+    onTertiary          = Slate50,
+    tertiaryContainer   = Slate100,
+    onTertiaryContainer = Slate800,
+
+    background   = Slate50,
+    onBackground = Slate900,
+
+    surface          = Tan50,
+    onSurface        = Slate900,
+    surfaceVariant   = Slate100,
+    onSurfaceVariant = Slate600,
+
+    error        = Red400,
+    onError      = Red50,
+    errorContainer   = Red100,
+    onErrorContainer = Red800,
+
+    outline        = Slate200,
+    outlineVariant = Slate100,
+)
+
+private val DarkColorScheme = darkColorScheme(
+    primary            = Olive400,
+    onPrimary          = Olive900,
+    primaryContainer   = Olive800,
+    onPrimaryContainer = Olive100,
+
+    secondary            = Tan400,
+    onSecondary          = Tan900,
+    secondaryContainer   = Tan800,
+    onSecondaryContainer = Tan100,
+
+    tertiary            = Slate400,
+    onTertiary          = Slate900,
+    tertiaryContainer   = Slate800,
+    onTertiaryContainer = Slate100,
+
+    background   = Slate900,
+    onBackground = Slate50,
+
+    surface          = Slate800,
+    onSurface        = Slate50,
+    surfaceVariant   = Slate800,
+    onSurfaceVariant = Slate200,
+
+    error        = Red400,
+    onError      = Red600,
+    errorContainer   = Red800,
+    onErrorContainer = Red100,
+
+    outline        = Slate600,
+    outlineVariant = Slate800,
 )
 
 @Composable
 fun CallForFireToolTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        typography  = Typography,
+        content     = content,
     )
 }

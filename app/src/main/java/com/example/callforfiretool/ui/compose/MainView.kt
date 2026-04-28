@@ -9,10 +9,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.callforfiretool.ui.theme.CallForFireToolTheme
 
 @Composable
 fun MainView() {
-    Scaffold(modifier = Modifier.fillMaxSize()) @Composable { innerPadding ->
+    Scaffold(modifier = Modifier
+        .fillMaxSize()
+        .testTag("mainScaffold")
+    ) {
+        innerPadding ->
         Greeting("World!", innerPadding)
     }
 }
@@ -31,5 +36,7 @@ fun Greeting(name: String, innerPaddingValues: PaddingValues) {
 @Composable
 @Preview
 fun MainViewPreview() {
-    MainView()
+    CallForFireToolTheme {
+        MainView()
+    }
 }
